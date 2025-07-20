@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Selamat Ulang Tahun Adek</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Segoe UI", sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      min-height: 100vh;
+      background: #ffcbe3;
+      overflow: hidden;
+    }
+
+    .circle-img {
+      border-radius: 50%;
+      overflow: hidden;
+      width: 200px;
+      height: 200px;
+      margin-bottom: 30px;
+      border: 5px solid white;
+    }
+
+    .circle-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .line {
+      opacity: 0;
+      font-size: 1.2em;
+      color: #222;
+      margin: 10px;
+      transition: opacity 1s ease-in-out;
+    }
+
+    .love {
+      font-size: 1.5em;
+      color: #e91e63;
+    }
+
+    .snowflake {
+      position: fixed;
+      top: -2em;
+      z-index: 9999;
+      user-select: none;
+      color: white;
+      font-size: 1.5em;
+      animation-name: fall;
+      animation-timing-function: linear;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(100vh); }
+    }
+  </style>
+</head>
+<body>
+
+<div class="circle-img">
+  <img src="https://i.imgur.com/Y9DVODS.jpg" alt="Foto Adek" />
+</div>
+
+<div class="line" style="animation-delay: 3s;">Selamat ulang tahun ya Adek 🎉</div>
+<div class="line" style="animation-delay: 6s;">Semoga panjang umur, sehat selalu 💖</div>
+<div class="line" style="animation-delay: 9s;">Mas akan selalu jaga kamu, temenin kamu, dan cintain kamu sekuat yang Mas bisa.</div>
+<div class="line" style="animation-delay: 11s;">Kamu anugerah terindah buat Mas, dan Mas nggak pernah lelah mencintaimu.</div>
+<div class="line love" style="animation-delay: 13s;">♡ Mas cinta kamu sekarang dan selamanya ♡</div>
+
+<audio autoplay loop>
+  <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mp3" />
+  Browser tidak mendukung audio.
+</audio>
+
+<script>
+  // Animasi salju
+  function createSnowflake() {
+    const snowflake = document.createElement("div");
+    snowflake.classList.add("snowflake");
+    snowflake.textContent = "❄";
+
+    snowflake.style.left = Math.random() * window.innerWidth + "px";
+    snowflake.style.animationDuration = 2 + Math.random() * 3 + "s";
+    snowflake.style.opacity = Math.random();
+    snowflake.style.fontSize = 10 + Math.random() * 20 + "px";
+
+    document.body.appendChild(snowflake);
+
+    setTimeout(() => snowflake.remove(), 5000);
+  }
+  setInterval(createSnowflake, 200);
+
+  // Teks muncul satu per satu
+  const lines = document.querySelectorAll(".line");
+  lines.forEach(line => line.style.opacity = 0);
+
+  lines.forEach(line => {
+    setTimeout(() => {
+      line.style.opacity = 1;
+    }, parseFloat(line.style.animationDelay) * 1000);
+  });
+</script>
+
+</body>
+</html>
